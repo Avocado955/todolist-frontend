@@ -17,7 +17,15 @@ const ToDoListForm = ({onSubmit}: ToDoListFormProps) => {
     <form className={styles.toDoListForm} onSubmit={handleSubmit(onSubmit)}>
       <div className={styles.field}>
         <label htmlFor="task">Task</label>
-        <input type="text" id="task" {...register('task')} />
+        <input type="text" id="task" placeholder="Task" {...register('task')} />
+        {errors?.task && <small className={styles.error_text}>{errors.task.message}</small>}
+      </div>
+      <div className={styles.field}>
+        <label htmlFor="category">Category</label>
+        <select name="" id="">
+          {/* Make this pull from the db and get all current categories */}
+          <option value=""></option>
+        </select>
         {errors?.task && <small className={styles.error_text}>{errors.task.message}</small>}
       </div>
 

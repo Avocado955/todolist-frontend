@@ -3,11 +3,12 @@
 
 .toDoListForm {
   @include m.displayFlex(row, flex-start, flex-start, nowrap);
+  gap: 0.5rem;
 }
 
 .field {
   @include m.displayFlex(row, flex-start, flex-start, nowrap);
-  gap: 0.5em;
+  gap: 0.5rem;
 }
 
 .form_Btn {
