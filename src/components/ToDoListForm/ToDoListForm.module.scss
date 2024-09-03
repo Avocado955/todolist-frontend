@@ -1,0 +1,23 @@
+@use "../../partials/mixins.scss" as m;
+@use "../../partials/variables.scss" as v;
+
+.toDoListForm {
+  @include m.displayFlex(column, center, center, nowrap);
+  gap: 0.5rem;
+  border: 1px red solid;
+  width: 300px;
+  height: 200px;
+}
+
+.field {
+  @include m.displayFlex(row, flex-start, flex-start, nowrap);
+  gap: 0.5rem;
+}
+
+.form_Btn {
+
+}
+
+.error_text {
+  color: rgb(185, 9, 9);
+}
