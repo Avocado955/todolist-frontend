@@ -18,21 +18,21 @@ const ToDoListForm = ({onSubmit}: ToDoListFormProps) => {
       <div className={styles.field}>
         <label htmlFor="task">Task</label>
         <input type="text" id="task" placeholder="Task" {...register('task')} />
-        {errors?.task && <small className={styles.error_text}>{errors.task.message}</small>}
       </div>
+        {errors?.task && <small className={styles.error_text}>{errors.task.message}</small>}
       <div className={styles.field}>
         <label htmlFor="category">Category</label>
         <select id="catergory" {...register('category')}>
           {/* Make this pull from the db and get all current categories */}
-          <option value=""></option>
+          <option value={1}>Chore</option>
         </select>
-        {errors?.task && <small className={styles.error_text}>{errors.task.message}</small>}
       </div>
+        {errors?.category && <small className={styles.error_text}>Select an option or create a Category</small>}
       <div>
         <label htmlFor="completed">Completed?</label>
         <input type="checkbox" id="completed" {...register('isComplete')} />
       </div>
-
+    <button type="submit">Submit</button>
     </form>
   )
 }
