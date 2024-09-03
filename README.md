@@ -1,50 +1,105 @@
-# React + TypeScript + Vite
+# To Do List Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+{add test badges here, all projects you build from here on out will have tests, therefore you should have github workflow badges at the top of your repositories: [Github Workflow Badges](https://docs.github.com/en/actions/monitoring-and-troubleshooting-workflows/adding-a-workflow-status-badge)}
 
-Currently, two official plugins are available:
+## Demo & Snippets
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   Include hosted link
+-   Include images of app if CLI or Client App
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Requirements / Purpose
 
-- Configure the top-level `parserOptions` property like this:
+###  MVP
+  -   Must be able to add categories
+  -   Must be able to add new tasks tagged with a task category
+  -   Must be able to update tasks automatically by changing the task name and the category
+  -   Must be able to duplicate tasks
+  -   Must be able to delete tasks
+  -   You must add your own styling
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+###  Stack
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+  - React
+  - React Hook Forms
+  - Zod Resolver
+  - SCSS
+  - TypeScript
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+---
+
+## Build Steps
+
+### Local Hosting
+
+  - If cloned and running on own machine, nagivate to the main directory and run following command:
+  ```bash
+    npm run dev
+  ```
+
+---
+
+## Design Goals / Approach
+
+-   Design goals
+-   why did you implement this the way you did?
+
+---
+
+## Features
+
+-   What features does the project have?
+-   list them...
+
+---
+
+## Known issues
+
+-   Remaining bugs, things that have been left unfixed
+-   Features that are buggy / flimsy
+
+---
+
+## Future Goals
+
+-   What are the immediate features you'd add given more time
+
+---
+
+## Change logs
+
+-   Write a paragraph labelled with the date every day you work on the project to discuss what you've done for the say. Be specific about the changes that have happened for that day.
+
+### 3/09/2024 - Finishing ToDoForm and Creating Category Form
+
+-   Finished implementing basics of the ToDo Form and tested it working inside of a HTML dialog element.
+-   Created the Category Form and added a basic implementation
+-   Adds the updated README
+
+### 27/08/2024 - Creating ToDoForm
+
+-   Creates the ToDo Form and makes it working with Zod resolver and React Hook Forms
+
+### 12/08/2024 - Uploading Project
+
+-   Initial commit with the project creation to Github
+
+---
+
+## What did you struggle with?
+
+-   What? Why? How?
+
+---
+
+## Licensing Details
+
+-   What type of license are you releasing this under?
+
+---
+
+## Further details, related projects, reimplementations
+
+-   ToDo Backend - [Backend](https://github.com/Avocado955/todolist-backend)
