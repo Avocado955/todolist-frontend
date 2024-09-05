@@ -63,3 +63,27 @@ export const updateToDoById = async (id: number, data: ToDoListData) => {
   }
   return (await response.json()) as ToDoListResponse;
 }
+
+export const createToDo = async (data: ToDoListData) => {
+  const response = await fetch(baseURL + "/todos", {
+    method: "POST",
+    body: JSON.stringify(data),
+    headers: {
+      'content-type':'application/json'
+    }
+  });
+  if (!response.ok) {
+    throw new Error("Failed to create new todo");
+  }
+  return await response.json() as ToDoListResponse;
+}
+
+export const deleteToDoById = async (id: number) => {
+  const response = await fetch(baseURL + "/todos/" + id, {
+    method: "DELETE",
+  });
+  if (!response.ok) {
+    throw new Error("Todo with id: " + id + " not found");
+  }
+  return true;
+}
