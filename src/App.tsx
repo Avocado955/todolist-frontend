@@ -4,6 +4,7 @@ import { CategoryData } from './components/CategoryForm/schema';
 import Heading from "./components/Heading/Heading";
 import { ToDoListData } from './components/ToDoListForm/schema'
 import ToDoListForm from './components/ToDoListForm/ToDoListForm'
+import CardDisplay from "./containers/CardDisplay/CardDisplay";
 
 function App() {
   const dialogElement = document.getElementById('todoForm') as HTMLDialogElement;
@@ -32,6 +33,7 @@ function App() {
   return (
     <div className={styles.app}>
       <Heading />
+      <CardDisplay />
 
     {/* <dialog id="todoForm" >
       <ToDoListForm onSubmit={onSubmit}></ToDoListForm>

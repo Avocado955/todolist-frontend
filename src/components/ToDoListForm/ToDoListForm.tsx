@@ -2,6 +2,8 @@ import {useForm} from "react-hook-form";
 import { ToDoListData, schema } from "./schema";
 import {zodResolver} from "@hookform/resolvers/zod";
 import styles from "./ToDoListForm.module.scss";
+import { useEffect, useState } from "react";
+import { CategoryResponse, getAllCategories } from "../../services/todoservices";
 
 
 interface ToDoListFormProps {
@@ -10,6 +12,14 @@ interface ToDoListFormProps {
 
 const ToDoListForm = ({onSubmit}: ToDoListFormProps) => {
   const {reset, register, formState:{errors, isSubmitSuccessful}, handleSubmit} = useForm<ToDoListData>({resolver: zodResolver(schema)});
+
+  const [categories, setCategories] = useState<CategoryResponse[]>([]);
+
+  useEffect(() => {
+    getAllCategories().then(data => {
+      setCategories(data)
+    }).catch(e => console.log(e));
+  }, [])
   
   isSubmitSuccessful && reset();
 
@@ -23,8 +33,7 @@ const ToDoListForm = ({onSubmit}: ToDoListFormProps) => {
       <div className={styles.field}>
         <label htmlFor="category">Category</label>
         <select id="catergory" {...register('category')}>
-          {/* Make this pull from the db and get all current categories */}
-          <option value={1}>Chore</option>
+          {categories && categories.map(category => <option value={category.id} key={category.id}>{category.name}</option>)}
         </select>
       </div>
         {errors?.category && <small className={styles.error_text}>Select an option or create a Category</small>}
