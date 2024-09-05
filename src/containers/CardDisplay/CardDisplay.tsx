@@ -1,24 +1,24 @@
 import { useEffect, useState } from "react";
 import styles from "./CardDisplay.module.scss";
-import { CategoryResponse, getAllCategories } from "../../services/todoservices";
+import { CategoryResponse, getAllCategories, getAllToDos, getToDoById, ToDoListResponse } from "../../services/todoservices";
 
 const CardDisplay = () => {
-  const [categories, setCategories] = useState<CategoryResponse[]>([]);
+  const [todos, setTodos] = useState<ToDoListResponse>();
 
   useEffect(() => {
-    getAllCategories().then(data => {
-      setCategories(data)
+    getToDoById(2).then(data => {
+      setTodos(data)
     }).catch(e => console.log(e));
   }, [])
 
-  const logCategories = () => {
-    console.log(categories);
+  const logAPICall = () => {
+    console.log(todos);
   }
 
   return (
     <div className={styles.cardDisplay}>
       CardDisplay
-      <button onClick={logCategories}>Log Categories</button>
+      <button onClick={logAPICall}>Log API Call</button>
     </div>
   )
 }
