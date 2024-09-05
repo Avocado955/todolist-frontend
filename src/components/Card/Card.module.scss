@@ -1,0 +1,21 @@
+@use "../../partials/mixins.scss" as m;
+@use "../../partials/variables.scss" as v;
+
+.card {
+  @include m.displayFlex(column, center, center, nowrap);
+  text-align: center;
+  border: 1px black solid;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  width: 400px;
+  height: 150px;
+
+  &_textMargin {
+    margin: 0.25rem;  
+  }
+
+  &_details {
+    @include m.displayFlex(row, flex-start, center, nowrap);
+    gap: 2rem;
+  }
+}

@@ -1,24 +1,16 @@
-import { useEffect, useState } from "react";
 import styles from "./CardDisplay.module.scss";
-import { CategoryResponse, getAllCategories, getAllToDos, getToDoById, ToDoListResponse } from "../../services/todoservices";
+import { ToDoListResponse } from "../../services/todoservices";
+import Card from "../../components/Card/Card";
 
-const CardDisplay = () => {
-  const [todos, setTodos] = useState<ToDoListResponse>();
+interface CardDisplayProps {
+  todos: ToDoListResponse[];
+}
 
-  useEffect(() => {
-    getToDoById(2).then(data => {
-      setTodos(data)
-    }).catch(e => console.log(e));
-  }, [])
-
-  const logAPICall = () => {
-    console.log(todos);
-  }
+const CardDisplay = ({todos}: CardDisplayProps) => {
 
   return (
     <div className={styles.cardDisplay}>
-      CardDisplay
-      <button onClick={logAPICall}>Log API Call</button>
+     {todos && todos.map(todo => <Card key={todo.id} todo={todo}/>)}
     </div>
   )
 }

@@ -4,11 +4,12 @@
 .banner {
   @include m.displayFlex(row, center, center, nowrap);
   width: 100%;
-  height: 5rem;
+  height: 6rem;
   background-color: v.$cadet-gray;
 }
 
 .heading {
   font-family: v.$headings;
-  font-weight: 400;
+  font-weight: 600;
+  font-size: 3rem;
 }

@@ -6,7 +6,7 @@ const baseURL = import.meta.env.VITE_APP_API_BASE_URL;
 export interface ToDoListResponse {
   id: number;
   task: string;
-  categoryId: string;
+  category: CategoryResponse;
   isCompleted: string;
   createdAt: string;
   updatedAt: string; 

@@ -1,10 +1,10 @@
-import styles from "./Heading.module.scss";
+import styles from "./Header.module.scss";
 
-const Heading = () => {
+const Header = () => {
   return (
     <div className={styles.banner}>
       <h1 className={styles.heading}>To-Do List</h1>
     </div>
   )
 }
-export default Heading
+export default Header

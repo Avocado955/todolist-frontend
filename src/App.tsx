@@ -1,13 +1,25 @@
+import { useEffect, useState } from "react";
 import styles from "./App.module.scss";
 import CategoryForm from './components/CategoryForm/CategoryForm';
 import { CategoryData } from './components/CategoryForm/schema';
-import Heading from "./components/Heading/Heading";
+import Header from "./components/Header/Header";
 import { ToDoListData } from './components/ToDoListForm/schema'
 import ToDoListForm from './components/ToDoListForm/ToDoListForm'
 import CardDisplay from "./containers/CardDisplay/CardDisplay";
+import { getAllToDos, ToDoListResponse } from "./services/todoservices";
 
 function App() {
-  const dialogElement = document.getElementById('todoForm') as HTMLDialogElement;
+  const [todos, setToDos] = useState<ToDoListResponse[]>([]);
+  const [dialogElement, setDialogElement] = useState<HTMLDialogElement | null>(null);
+
+  useEffect(() => {
+    const foundDialogElement = document.getElementById('todoForm') as HTMLDialogElement;
+    setDialogElement(foundDialogElement);
+
+    getAllToDos().then(data => setToDos(data)).catch(e => console.log(e));
+  }, [])
+
+
   // might need to have a useEffect to ensure the dialog renders before trying to set it
   console.log(dialogElement);
   console.log(document.getElementById('todoForm'));
@@ -22,18 +34,18 @@ function App() {
 
   const openDialog = () => {
     console.log(dialogElement);
-    dialogElement.showModal();
+    dialogElement?.showModal();
   }
   
   const closeDialog = () => {
-      dialogElement.close();
+      dialogElement?.close();
 
   }
 
   return (
     <div className={styles.app}>
-      <Heading />
-      <CardDisplay />
+      <Header />
+      {todos && <CardDisplay todos={todos} />}
 
     {/* <dialog id="todoForm" >
       <ToDoListForm onSubmit={onSubmit}></ToDoListForm>
