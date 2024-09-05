@@ -2,14 +2,23 @@
 @use "../../partials/variables.scss" as v;
 
 .banner {
-  @include m.displayFlex(row, center, center, nowrap);
+  @include m.displayFlex(column, center, center, nowrap);
   width: 100%;
-  height: 6rem;
+  height: 7rem;
+  gap: 0.25rem;
   background-color: v.$cadet-gray;
+
+  &_buttonsArea {
+    @include m.displayFlex(row, center, center, nowrap);
+    width: 100%;
+    height: 2rem;
+  }
 }
 
 .heading {
   font-family: v.$headings;
   font-weight: 600;
   font-size: 3rem;
+  margin: 0;
+  margin-top: 5px;
 }

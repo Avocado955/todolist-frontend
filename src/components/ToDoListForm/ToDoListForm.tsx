@@ -31,15 +31,15 @@ const ToDoListForm = ({onSubmit}: ToDoListFormProps) => {
       </div>
         {errors?.task && <small className={styles.error_text}>{errors.task.message}</small>}
       <div className={styles.field}>
-        <label htmlFor="category">Category</label>
-        <select id="catergory" {...register('category')}>
+        <label htmlFor="categoryId">Category</label>
+        <select id="catergoryId" {...register('categoryId')}>
           {categories && categories.map(category => <option value={category.id} key={category.id}>{category.name}</option>)}
         </select>
       </div>
-        {errors?.category && <small className={styles.error_text}>Select an option or create a Category</small>}
+        {errors?.categoryId && <small className={styles.error_text}>Select an option or create a Category</small>}
       <div>
         <label htmlFor="completed">Completed?</label>
-        <input type="checkbox" id="completed" {...register('isComplete')} />
+        <input type="checkbox" id="completed" {...register('isCompleted')} />
       </div>
     <button type="submit">Submit</button>
     </form>

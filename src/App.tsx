@@ -6,7 +6,7 @@ import Header from "./components/Header/Header";
 import { ToDoListData } from './components/ToDoListForm/schema'
 import ToDoListForm from './components/ToDoListForm/ToDoListForm'
 import CardDisplay from "./containers/CardDisplay/CardDisplay";
-import { getAllToDos, ToDoListResponse } from "./services/todoservices";
+import { createToDo, getAllToDos, ToDoListResponse } from "./services/todoservices";
 
 function App() {
   const [todos, setToDos] = useState<ToDoListResponse[]>([]);
@@ -19,40 +19,39 @@ function App() {
     getAllToDos().then(data => setToDos(data)).catch(e => console.log(e));
   }, [])
 
-
-  // might need to have a useEffect to ensure the dialog renders before trying to set it
-  console.log(dialogElement);
-  console.log(document.getElementById('todoForm'));
-
-  const onSubmit = (data: ToDoListData) => {
+  const onToDoSubmit = async (data: ToDoListData) => {
     console.log(data);
+    createToDo(data).then(newToDo => setToDos([...todos, newToDo])).catch(e => console.log(e));
   }
 
-  const handleSubmit = (data: CategoryData) => {
+  const onCategorySubmit = (data: CategoryData) => {
     console.log(data);
   }
 
   const openDialog = () => {
-    console.log(dialogElement);
-    dialogElement?.showModal();
+    if (dialogElement?.open) {
+      dialogElement?.close();
+    } else {
+      dialogElement?.showModal();
+    }
   }
   
   const closeDialog = () => {
-      dialogElement?.close();
-
+    dialogElement?.close();
   }
 
   return (
     <div className={styles.app}>
-      <Header />
+      <Header onAddToDoClick={openDialog}/>
       {todos && <CardDisplay todos={todos} />}
 
-    {/* <dialog id="todoForm" >
-      <ToDoListForm onSubmit={onSubmit}></ToDoListForm>
-      <button onClick={closeDialog}>Close</button>
+    <dialog id="todoForm" className={styles.modal} >
+      <ToDoListForm onSubmit={onToDoSubmit}></ToDoListForm>
+      <button className={styles.modal_close} onClick={closeDialog}>X</button>
     </dialog>
-      <CategoryForm onSubmit={handleSubmit}></CategoryForm>
-      <button onClick={openDialog}>Open Form</button> */}
+    <dialog>
+      {/* <CategoryForm onSubmit={onCategorySubmit}></CategoryForm> */}
+    </dialog>
     
     </div>
   )

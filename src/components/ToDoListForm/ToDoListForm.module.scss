@@ -3,8 +3,7 @@
 
 .toDoListForm {
   @include m.displayFlex(column, center, center, nowrap);
-  gap: 0.5rem;
-  border: 1px red solid;
+  gap: 0.75rem;
   width: 300px;
   height: 200px;
 }
