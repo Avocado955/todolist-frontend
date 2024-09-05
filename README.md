@@ -72,19 +72,23 @@
 
 -   Write a paragraph labelled with the date every day you work on the project to discuss what you've done for the say. Be specific about the changes that have happened for that day.
 
-### 3/09/2024 - Finishing ToDoForm and Creating Category Form
+### 12/08/2024 - Uploading Project
 
--   Finished implementing basics of the ToDo Form and tested it working inside of a HTML dialog element.
--   Created the Category Form and added a basic implementation
+-   Initial commit with the project creation to Github
 -   Adds the updated README
 
 ### 27/08/2024 - Creating ToDoForm
 
 -   Creates the ToDo Form and makes it working with Zod resolver and React Hook Forms
 
-### 12/08/2024 - Uploading Project
+### 3/09/2024 - Finishing ToDoForm and Creating Category Form
 
--   Initial commit with the project creation to Github
+-   Finished implementing basics of the ToDo Form and tested it working inside of a HTML dialog element.
+-   Created the Category Form and added a basic implementation
+
+### 5/09/2024 - ToDo list layout
+
+-   Fixed the body having a offset pushing all the other content off to the side
 
 ---
 

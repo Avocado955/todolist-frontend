@@ -1,11 +1,15 @@
-import './App.css'
+import styles from "./App.module.scss";
 import CategoryForm from './components/CategoryForm/CategoryForm';
 import { CategoryData } from './components/CategoryForm/schema';
+import Heading from "./components/Heading/Heading";
 import { ToDoListData } from './components/ToDoListForm/schema'
 import ToDoListForm from './components/ToDoListForm/ToDoListForm'
 
 function App() {
   const dialogElement = document.getElementById('todoForm') as HTMLDialogElement;
+  // might need to have a useEffect to ensure the dialog renders before trying to set it
+  console.log(dialogElement);
+  console.log(document.getElementById('todoForm'));
 
   const onSubmit = (data: ToDoListData) => {
     console.log(data);
@@ -16,6 +20,7 @@ function App() {
   }
 
   const openDialog = () => {
+    console.log(dialogElement);
     dialogElement.showModal();
   }
   
@@ -25,17 +30,17 @@ function App() {
   }
 
   return (
-    <>
-      
+    <div className={styles.app}>
+      <Heading />
 
-    {/* <dialog id="todoForm">
+    {/* <dialog id="todoForm" >
       <ToDoListForm onSubmit={onSubmit}></ToDoListForm>
       <button onClick={closeDialog}>Close</button>
     </dialog>
       <CategoryForm onSubmit={handleSubmit}></CategoryForm>
       <button onClick={openDialog}>Open Form</button> */}
     
-    </>
+    </div>
   )
 }
 
