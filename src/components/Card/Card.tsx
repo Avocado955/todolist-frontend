@@ -8,10 +8,10 @@ interface CardProps {
 const Card = ({todo}:CardProps) => {
   return (
     <div className={styles.card}>
-      <h3 className={styles.card_textMargin}>{todo.task}</h3>
+      <h2 className={styles.card_textMargin}>{todo.task}</h2>
       <div className={styles.card_details}>
         <div>
-          <h4 className={styles.card_textMargin}>{todo.category.name}</h4>
+          <h4 className={styles.card_textMargin}>Category: {todo.category.name}</h4>
         </div>
         <div>
           <label htmlFor="isCompleted">Is Completed</label>

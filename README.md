@@ -91,6 +91,7 @@
 -   Fixed the body having a offset pushing all the other content off to the side
 -   Implemented the service fetch requests for Todos and Get all for Category
 
+
 ---
 
 ## What did you struggle with?
