@@ -41,7 +41,7 @@ const ToDoListForm = ({onSubmit}: ToDoListFormProps) => {
         <label htmlFor="completed">Completed?</label>
         <input type="checkbox" id="completed" {...register('isCompleted')} />
       </div>
-    <button type="submit">Submit</button>
+    <button className={styles.form_Btn} type="submit">Submit</button>
     </form>
   )
 }

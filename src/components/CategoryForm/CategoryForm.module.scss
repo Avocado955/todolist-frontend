@@ -3,7 +3,7 @@
 
 .categoryForm {
   @include m.displayFlex(column, center, center, nowrap);
-  gap: 0.5rem;
+  gap: 1rem;
   width: 300px;
   height: 200px;
 }
@@ -11,6 +11,10 @@
 .field {
   @include m.displayFlex(row, flex-start, flex-start, nowrap);
   gap: 0.5rem;
+}
+
+.form_Btn {
+  @include m.button;
 }
 
 .error_text {

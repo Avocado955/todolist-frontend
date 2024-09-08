@@ -19,7 +19,7 @@ const CategoryForm = ({onSubmit}: CateogryFormProps) => {
         <input type="text" id="categoryName" placeholder="Category Name" {...register('categoryName')} />
         {errors?.categoryName && <small className={styles.error_text}>{errors.categoryName.message}</small>}
       </div>
-      <button type="submit">Submit</button>
+      <button className={styles.form_Btn} type="submit">Submit</button>
     </form>
   )
 }

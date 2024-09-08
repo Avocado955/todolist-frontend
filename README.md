@@ -93,6 +93,9 @@
 
 ### 8/09/2024 - 
 
+-   Added styling for the buttons
+-   Implemented the isCompleted actually updating the database
+-   Fixed the issue of isCompleted not being correct with the database
 
 ---
 
