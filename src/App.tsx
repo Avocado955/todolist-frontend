@@ -10,11 +10,15 @@ import { createToDo, getAllToDos, ToDoListResponse } from "./services/todoservic
 
 function App() {
   const [todos, setToDos] = useState<ToDoListResponse[]>([]);
-  const [dialogElement, setDialogElement] = useState<HTMLDialogElement | null>(null);
+  const [todoDialog, setTodoDialog] = useState<HTMLDialogElement | null>(null);
+  const [categoryDialog, setCategoryDialog] = useState<HTMLDialogElement | null>(null);
 
   useEffect(() => {
-    const foundDialogElement = document.getElementById('todoForm') as HTMLDialogElement;
-    setDialogElement(foundDialogElement);
+    const foundTodoDialog = document.getElementById('todoForm') as HTMLDialogElement;
+    setTodoDialog(foundTodoDialog);
+
+    const foundCategoryDialog = document.getElementById('categoryForm') as HTMLDialogElement;
+    setCategoryDialog(foundCategoryDialog);
 
     getAllToDos().then(data => setToDos(data)).catch(e => console.log(e));
   }, [])
@@ -28,29 +32,42 @@ function App() {
     console.log(data);
   }
 
-  const openDialog = () => {
-    if (dialogElement?.open) {
-      dialogElement?.close();
+  const openTodoDialog = () => {
+    if (todoDialog?.open) {
+      todoDialog?.close();
     } else {
-      dialogElement?.showModal();
+      todoDialog?.showModal();
+    }
+  }
+
+  const openCategoryDialog = () => {
+    if (categoryDialog?.open) {
+      categoryDialog?.close();
+    } else {
+      categoryDialog?.showModal();
     }
   }
   
-  const closeDialog = () => {
-    dialogElement?.close();
+  const closeTodoDialog = () => {
+    todoDialog?.close();
+  }
+  
+  const closeCategoryDialog = () => {
+    categoryDialog?.close();
   }
 
   return (
     <div className={styles.app}>
-      <Header onAddToDoClick={openDialog}/>
+      <Header onAddToDoClick={openTodoDialog} onAddCategoryClick={openCategoryDialog}/>
       {todos && <CardDisplay todos={todos} />}
 
     <dialog id="todoForm" className={styles.modal} >
       <ToDoListForm onSubmit={onToDoSubmit}></ToDoListForm>
-      <button className={styles.modal_close} onClick={closeDialog}>X</button>
+      <button className={styles.modal_close} onClick={closeTodoDialog}>X</button>
     </dialog>
-    <dialog>
-      {/* <CategoryForm onSubmit={onCategorySubmit}></CategoryForm> */}
+    <dialog id="categoryForm" className={styles.modal}>
+      <CategoryForm onSubmit={onCategorySubmit}></CategoryForm>
+      <button className={styles.modal_close} onClick={closeCategoryDialog}>X</button>
     </dialog>
     
     </div>

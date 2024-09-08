@@ -2,10 +2,15 @@
 @use "../../partials/variables.scss" as v;
 
 .categoryForm {
-  @include m.displayFlex(column, flex-start, center, nowrap);
+  @include m.displayFlex(column, center, center, nowrap);
   gap: 0.5rem;
   width: 300px;
   height: 200px;
+}
+
+.field {
+  @include m.displayFlex(row, flex-start, flex-start, nowrap);
+  gap: 0.5rem;
 }
 
 .error_text {
