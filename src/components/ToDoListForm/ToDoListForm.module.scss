@@ -4,8 +4,11 @@
 .toDoListForm {
   @include m.displayFlex(column, center, center, nowrap);
   gap: 1rem;
-  width: 300px;
-  height: 200px;
+  width: 400px;
+  height: 300px;
+  font-size: larger;
+  border-radius: v.$borderRadius;
+  box-shadow: 2px 2px 4px rgba($color: v.$dim-gray, $alpha: 0.8);
 }
 
 .field {

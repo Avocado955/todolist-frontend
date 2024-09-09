@@ -2,9 +2,23 @@
 @use "../../partials/variables.scss" as v;
 
 .cardDisplay {
-  @include m.displayFlex(column, flex-start, center, nowrap);
+  @include m.displayFlex(column, center, center, nowrap);
+  
+  @include m.md-screen {
+    @include m.displayFlex(row, center, flex-start, nowrap);
+  }
+  
+  margin-top: 1.5rem;
   text-align: center;
   gap: 1rem;
   width: 100%;
   height: 100%;
+}
+
+.sections {
+  @include m.displayFlex(column, flex-start, flex-start, nowrap);
+  gap: 0.5rem;
+  padding: 1.5rem;
+  border-radius: v.$borderRadius;
+  background-color: white;
 }

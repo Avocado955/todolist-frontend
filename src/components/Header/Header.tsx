@@ -19,7 +19,7 @@ const Header = ({onAddToDoClick, onAddCategoryClick}: HeaderProps) => {
       <h1 className={styles.heading}>To-Do List</h1>
       <div className={styles.banner_buttonsArea}>
         <button className={styles.btn} onClick={addToDo}>Add To-Do</button>
-        <button className={styles.btn} onClick={addCategory}>Add Category</button>
+        <button className={styles.btn} onClick={addCategory}>Manage Categories</button>
       </div>
     </div>
   )

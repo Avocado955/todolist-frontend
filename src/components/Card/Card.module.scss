@@ -4,11 +4,12 @@
 .card {
   @include m.displayFlex(column, center, center, nowrap);
   text-align: center;
-  border: 1px black solid;
+  border-radius: v.$borderRadius;
+  box-shadow: 2px 2px 4px v.$dim-gray;
   gap: 0.5rem;
   padding: 0.5rem;
   width: 400px;
-  height: 150px;
+  height: 100px;
 
   &_textMargin {
     margin: 0.25rem;  
