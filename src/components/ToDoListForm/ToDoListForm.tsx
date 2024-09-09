@@ -3,7 +3,7 @@ import { ToDoListData, schema } from "./schema";
 import {zodResolver} from "@hookform/resolvers/zod";
 import styles from "./ToDoListForm.module.scss";
 import { useEffect, useState } from "react";
-import { CategoryResponse, getAllCategories } from "../../services/todoservices";
+import { CategoryResponse, getAllCategories } from "../../services/categoryservice";
 
 
 interface ToDoListFormProps {
