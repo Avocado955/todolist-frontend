@@ -97,6 +97,15 @@
 -   Implemented the isCompleted actually updating the database
 -   Fixed the issue of isCompleted not being correct with the database
 
+### 9/09/2024 - Styling
+
+-   Fixes styling for buttons to use the colour scheme chosen
+-   Adds 2 secitons for the todo cards to be in, complete or todo
+-   Styles the forms to be more noticable in the 
+
+### 12/09/2024 - Error handling
+
+-   Adds a method of handling errors instead of just displaying them to the console
 ---
 
 ## What did you struggle with?

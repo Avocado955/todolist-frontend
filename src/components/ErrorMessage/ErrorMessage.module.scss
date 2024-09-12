@@ -1,0 +1,13 @@
+@use "../../partials/mixins.scss" as m;
+@use "../../partials/variables.scss" as v;
+
+.errorMessage {
+  @include m.displayFlex(column, center, center, nowrap);
+  padding: 1rem;
+  background-color: red;
+  color: white;
+  border-radius: v.$borderRadius;
+  box-shadow: v.$shadowBox;
+  text-align: center;
+  margin: 0.25rem;
+}
