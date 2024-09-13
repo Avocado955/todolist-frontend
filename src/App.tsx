@@ -10,7 +10,7 @@ import { createToDo, getAllToDos, ToDoListResponse } from "./services/todoservic
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 
 function App() {
-  const [errors, setErrors] = useState<Error[]>([]);
+  const [error, setError] = useState<Error>();
   const [todos, setToDos] = useState<ToDoListResponse[]>([]);
   const [todoDialog, setTodoDialog] = useState<HTMLDialogElement | null>(null);
   const [categoryDialog, setCategoryDialog] = useState<HTMLDialogElement | null>(null);
@@ -24,9 +24,7 @@ function App() {
 
     getAllToDos().then(data => setToDos(data)).catch(e => {
       console.log(e);
-      const newErrors = errors;
-      newErrors.push(e);
-      setErrors(newErrors);
+      updateError(e);
     });
   }, [])
 
@@ -34,9 +32,7 @@ function App() {
     console.log(data);
     createToDo(data).then(newToDo => setToDos([...todos, newToDo])).catch(e => {
       console.log(e);
-      const newErrors = errors;
-      newErrors.push(e);
-      setErrors(newErrors);
+      updateError(e);
     });
   }
 
@@ -68,13 +64,22 @@ function App() {
     categoryDialog?.close();
   }
 
-  console.log("Did it update? " + errors);
-  console.log("Error length " + errors.length);
+  const updateError = (error: Error) => {
+    let newError = new Error;
+    if (error.message == "NetworkError when attempting to fetch resource.") {
+      newError.message = "Network Error when attempting to fetch resource. Is the Backend running?";
+    } else {
+      newError = error;
+    }
+    setError(newError);
+  }
+
+  console.log("Did it update? " + error);
 
   return (
     <div className={styles.app}>
       <Header onAddToDoClick={openTodoDialog} onAddCategoryClick={openCategoryDialog}/>
-      {errors.length != 0 && <ErrorMessage error={errors} /> }
+      {error && <ErrorMessage error={error} /> }
       {todos && <CardDisplay todos={todos} />}
 
       <dialog id="todoForm" className={styles.modal} >

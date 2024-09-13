@@ -1,7 +1,7 @@
 import styles from "./ErrorMessage.module.scss";
 
 interface ErrorMessageProps {
-  error: Error[];
+  error: Error;
 }
 
 const ErrorMessage = ({error}: ErrorMessageProps) => {
@@ -10,7 +10,7 @@ const ErrorMessage = ({error}: ErrorMessageProps) => {
 
   return (
     <div className={styles.errorMessage}>
-      {error.map(e => <h3>{e.message}</h3>)}
+      <h3>{error.message}</h3>
     </div>
   )
 }

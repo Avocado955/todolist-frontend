@@ -2,7 +2,7 @@
 @use "./partials/mixins.scss" as m;
 
 .app {
-  @include m.displayFlex(column, flex-start, flex-start, nowrap);
+  @include m.displayFlex(column, flex-start, center, nowrap);
   width: 100vw;
   height: 100vh;
   
