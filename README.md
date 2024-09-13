@@ -106,6 +106,11 @@
 ### 12/09/2024 - Error handling
 
 -   Adds a method of handling errors instead of just displaying them to the console
+
+### 13/09/2024 - Category Management
+
+-   Fixes the error handling on the main page for when the backend isnt running
+-   Adds the category cards to the manage categories modal
 ---
 
 ## What did you struggle with?

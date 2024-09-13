@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import styles from "./App.module.scss";
-import CategoryForm from './components/CategoryForm/CategoryForm';
-import { CategoryData } from './components/CategoryForm/schema';
 import Header from "./components/Header/Header";
 import { ToDoListData } from './components/ToDoListForm/schema'
 import ToDoListForm from './components/ToDoListForm/ToDoListForm'
 import CardDisplay from "./containers/CardDisplay/CardDisplay";
 import { createToDo, getAllToDos, ToDoListResponse } from "./services/todoservices";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
+import CategoryManager from "./containers/CategoryManager/CategoryManager";
 
 function App() {
   const [error, setError] = useState<Error>();
@@ -36,9 +35,7 @@ function App() {
     });
   }
 
-  const onCategorySubmit = (data: CategoryData) => {
-    console.log(data);
-  }
+
 
   const openTodoDialog = () => {
     if (todoDialog?.open) {
@@ -87,7 +84,7 @@ function App() {
         <button className={styles.modal_close} onClick={closeTodoDialog}>X</button>
       </dialog>
       <dialog id="categoryForm" className={styles.modal}>
-        <CategoryForm onSubmit={onCategorySubmit}></CategoryForm>
+        <CategoryManager />
         <button className={styles.modal_close} onClick={closeCategoryDialog}>X</button>
       </dialog>
     

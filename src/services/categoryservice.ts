@@ -15,3 +15,14 @@ export const getAllCategories = async () => {
   }
   return await response.json();
 }
+
+export const getCategoryById = async (id: number) => {
+  const response = await fetch(baseURL + '/categories/' + id);
+  if(!response.ok) {
+    if (response.status === 404) {
+      throw new Error(await response.text());
+    }
+    throw new Error("Something went wrong with getCategoryById");
+  }
+  return await response.json() as CategoryResponse;
+}

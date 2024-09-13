@@ -1,0 +1,13 @@
+@use "../../partials/mixins.scss" as m;
+@use "../../partials/variables.scss" as v;
+
+.categoryManager {
+  @include m.displayFlex(column, flex-start, center, nowrap);
+  gap: 1rem;
+}
+
+.categoryCardDisplay {
+  @include m.displayFlex(column, center, center, nowrap);
+  gap: 0.5rem;
+  width: 100%;
+}

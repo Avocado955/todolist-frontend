@@ -26,7 +26,7 @@ export const getToDoById = async (id: number) => {
     if (response.status === 404) {
       throw new Error(await response.text());
     }
-    throw new Error("Something went wrong");
+    throw new Error("Something went wrong with getToDoById");
   }
   return await response.json() as ToDoListResponse;
 }
@@ -43,7 +43,7 @@ export const updateToDoById = async (id: number, data: ToDoListData) => {
     if (response.status === 404) {
       throw new Error(await response.text());
     }
-    throw new Error("Something went wrong");
+    throw new Error("Something went wrong with updateToDoById");
   }
   return (await response.json()) as ToDoListResponse;
 }

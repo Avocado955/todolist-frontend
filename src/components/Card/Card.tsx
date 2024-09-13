@@ -16,7 +16,6 @@ const Card = ({todo}:CardProps) => {
     const newTodo = {task: todo.task, categoryId: todo.category.id.toString(), isCompleted: isCompleteValue};
     console.log(newTodo);
     updateToDoById(todo.id, newTodo).then(result => console.log(result)).catch(e => console.log(e));
-
   }
 
   return (
