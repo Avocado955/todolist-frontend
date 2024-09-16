@@ -20,15 +20,17 @@ const Card = ({todo}:CardProps) => {
 
   return (
     <div className={styles.card}>
-      <h2 className={styles.card_textMargin}>{todo.task}</h2>
       <div className={styles.card_details}>
-        <div>
+        <h2 className={styles.card_textMargin}>{todo.task}</h2>
+        <div className={styles.sectionRow}>
           <h4 className={styles.card_textMargin}>Category: {todo.category.name}</h4>
+          <label htmlFor="isCompleted" className={styles.cursorChange}>Is Completed</label>
+          <input type="checkbox" name="isCompleted" id="isCompleted" checked={checkedState} onChange={valueChanged} className={styles.cursorChange} />
         </div>
-        <div>
-          <label htmlFor="isCompleted">Is Completed</label>
-          <input type="checkbox" name="isCompleted" id="isCompleted" checked={checkedState} onChange={valueChanged} />
-        </div>
+      </div>
+      <div className={styles.sectionColumn}>
+        <button className={styles.editBtn}>Edit</button>
+        <button className={styles.duplicateBtn}>Duplicate</button>
       </div>
     </div>
   )

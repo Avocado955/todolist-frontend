@@ -2,21 +2,59 @@
 @use "../../partials/variables.scss" as v;
 
 .card {
-  @include m.displayFlex(column, center, center, nowrap);
+  @include m.displayFlex(row, center, center, nowrap);
   text-align: center;
   border-radius: v.$borderRadius;
   box-shadow: 2px 2px 4px v.$dim-gray;
-  gap: 0.5rem;
-  padding: 0.5rem;
+  gap: 1rem;
+  padding: 0.75rem;
   width: 400px;
   height: 100px;
-
+  
   &_textMargin {
     margin: 0.25rem;  
   }
-
+  
   &_details {
-    @include m.displayFlex(row, flex-start, center, nowrap);
-    gap: 2rem;
+    @include m.displayFlex(column, flex-start, center, nowrap);
+    gap: 0.5rem;
+  }
+}
+
+.cursorChange {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.sectionRow {
+  @include m.displayFlex(row, flex-start, center, nowrap);
+  gap: 2rem;
+}
+
+.sectionColumn {
+  @include m.displayFlex(column, flex-start, center, nowrap);
+  gap: 0.25rem;
+}
+
+.editBtn {
+  @include m.button;
+  background-color: v.$greenMain;
+
+  &:hover {
+    background-color: v.$greenHover;
+  }
+}
+
+.duplicateBtn {
+  @include m.button;
+}
+
+.deleteBtn {
+  @include m.button;
+  background-color: v.$redMain;
+
+  &:hover {
+    background-color: v.$redHover;
   }
 }

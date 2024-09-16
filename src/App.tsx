@@ -80,7 +80,7 @@ function App() {
       {todos && <CardDisplay todos={todos} />}
 
       <dialog id="todoForm" className={styles.modal} >
-        <ToDoListForm onSubmit={onToDoSubmit}></ToDoListForm>
+        <ToDoListForm onSubmit={onToDoSubmit} mode="ADD"></ToDoListForm>
         <button className={styles.modal_close} onClick={closeTodoDialog}>X</button>
       </dialog>
       <dialog id="categoryForm" className={styles.modal}>

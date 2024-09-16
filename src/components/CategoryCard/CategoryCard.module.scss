@@ -20,10 +20,10 @@
   
   &_delete {
     @include m.button;
-    background-color: #ff0000;
+    background-color: v.$redMain;
 
     &:hover {
-      background-color: #c72f2f;
+      background-color: v.$redHover;
     }
   }
 }

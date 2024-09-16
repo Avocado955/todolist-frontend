@@ -8,9 +8,10 @@ import { CategoryResponse, getAllCategories } from "../../services/categoryservi
 
 interface ToDoListFormProps {
   onSubmit: (data: ToDoListData) => unknown;
+  mode: 'EDIT' | 'ADD';
 }
 
-const ToDoListForm = ({onSubmit}: ToDoListFormProps) => {
+const ToDoListForm = ({onSubmit, mode}: ToDoListFormProps) => {
   const {reset, register, formState:{errors, isSubmitSuccessful}, handleSubmit} = useForm<ToDoListData>({resolver: zodResolver(schema)});
 
   const [categories, setCategories] = useState<CategoryResponse[]>([]);
@@ -25,6 +26,7 @@ const ToDoListForm = ({onSubmit}: ToDoListFormProps) => {
 
   return (
     <form className={styles.toDoListForm} onSubmit={handleSubmit(onSubmit)}>
+      <h2>{mode == "ADD" ? "Create " : "Edit "}To Do</h2>
       <div className={styles.field}>
         <label htmlFor="task">Task</label>
         <input type="text" id="task" placeholder="Task" {...register('task')} />
