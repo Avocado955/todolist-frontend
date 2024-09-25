@@ -7,16 +7,12 @@ import { ToDoListData } from "../ToDoListForm/schema";
 
 interface CardProps {
   todo: ToDoListResponse;
+  onEditClick: (todoId: number) => unknown;
 }
 
-const Card = ({todo}:CardProps) => {
-  const [todoDialog, setTodoDialog] = useState<HTMLDialogElement | null>(null);
+const Card = ({todo, onEditClick}:CardProps) => {
   const [checkedState, setCheckedState] = useState<boolean>(Boolean(todo.isCompleted));
 
-  useEffect(() => {
-    const foundTodoDialog = document.getElementById('todoFormEdit') as HTMLDialogElement;
-    setTodoDialog(foundTodoDialog);
-  }, [])
 
   const valueChanged = () => {
     const isCompleteValue = !checkedState;
@@ -26,21 +22,7 @@ const Card = ({todo}:CardProps) => {
     updateToDoById(todo.id, newTodo).then(result => console.log(result)).catch(e => console.log(e));
   }
 
-  const onToDoSubmit = (data: ToDoListData) => {
-    console.log(data);
-  }
   
-  const openTodoDialog = () => {
-    if (todoDialog?.open) {
-      todoDialog?.close();
-    } else {
-      todoDialog?.showModal();
-    }
-  }
-
-  const closeTodoDialog = () => {
-    todoDialog?.close();
-  }
 
   return (
     <div className={styles.card}>
@@ -53,13 +35,10 @@ const Card = ({todo}:CardProps) => {
         </div>
       </div>
       <div className={styles.sectionColumn}>
-        <button className={styles.editBtn} onClick={openTodoDialog}>Edit</button>
+        <button className={styles.editBtn} onClick={() => onEditClick(todo.id)}>Edit</button>
         <button className={styles.duplicateBtn}>Duplicate</button>
       </div>
-      <dialog id="todoFormEdit" className={styles.modal} >
-        <ToDoListForm onSubmit={onToDoSubmit} mode="EDIT"></ToDoListForm>
-        <button className={styles.modal_close} onClick={closeTodoDialog}>X</button>
-      </dialog>
+     
     </div>
   )
 }

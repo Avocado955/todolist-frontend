@@ -36,7 +36,6 @@ function App() {
   }
 
 
-
   const openTodoDialog = () => {
     if (todoDialog?.open) {
       todoDialog?.close();
@@ -80,7 +79,7 @@ function App() {
       {todos && <CardDisplay todos={todos} />}
 
       <dialog id="todoForm" className={styles.modal} >
-        <ToDoListForm onSubmit={onToDoSubmit} mode="ADD"></ToDoListForm>
+        <ToDoListForm onSubmit={onToDoSubmit} mode="ADD" defaultValues={undefined}></ToDoListForm>
         <button className={styles.modal_close} onClick={closeTodoDialog}>X</button>
       </dialog>
       <dialog id="categoryForm" className={styles.modal}>
