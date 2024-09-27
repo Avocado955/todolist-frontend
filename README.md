@@ -111,10 +111,22 @@
 
 -   Fixes the error handling on the main page for when the backend isnt running
 -   Adds the category cards to the manage categories modal
+
+
+### 19/09/2024 - Bug fixing
+
+-   Fixed the issues from when working on laptop and bringing it back to desktop as laptop was apparently missing files
+
+### 27/09/2024 - Context Providers
+
+-   Adds the todo Context provider and gets it working properly with updating the 2 lists when the user updates if the todo card is complete
+-   Adds the category context provider beginings
+
 ---
 
 ## What did you struggle with?
 
+-   Getting the context to work properly with updating the incomplete and completed lists when the user presses the isCompleted checkbox as it needed to wait for the update to take affect before updating the lists
 -   What? Why? How?
 
 ---

@@ -1,33 +1,21 @@
 import styles from "./CardDisplay.module.scss";
 import { getToDoById, ToDoListResponse } from "../../services/todoservices";
 import Card from "../../components/Card/Card";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { ToDoListData } from "../../components/ToDoListForm/schema";
 import ToDoListForm from "../../components/ToDoListForm/ToDoListForm";
+import { TodoContext } from "../../contexts/TodoContextProvider";
 
-interface CardDisplayProps {
-  todos: ToDoListResponse[];
-}
 
-const CardDisplay = ({todos}: CardDisplayProps) => {
+const CardDisplay = () => {
   const [todoDialogEdit, setTodoDialogEdit] = useState<HTMLDialogElement | null>(null);
   const [todo, setTodo] = useState<ToDoListResponse | undefined>(undefined);
-  const [incomplete, setIncomplete] = useState<ToDoListResponse[]>([]);
-  const [complete, setComplete] = useState<ToDoListResponse[]>([]);
+  const {todoData} = useContext(TodoContext);
 
   useEffect(() => {
     const foundTodoDialog = document.getElementById('todoFormEdit') as HTMLDialogElement;
     setTodoDialogEdit(foundTodoDialog);
   }, [])
-
-  useEffect(() => {
-    // Assign all incomplete and complete with a check if any change and get it to update
-    const mappedIncomplete = todos.filter(todo => Boolean(todo.isCompleted) == false);
-    setIncomplete(mappedIncomplete);
-    
-    const mappedComplete = todos.filter(todo => Boolean(todo.isCompleted) == true);
-    setComplete(mappedComplete);
-  }, [todos])
 
 
   const onToDoSubmit = (data: ToDoListData) => {
@@ -53,11 +41,11 @@ const CardDisplay = ({todos}: CardDisplayProps) => {
     <div className={styles.cardDisplay}>
       <div className={styles.sections}>
         <h2>To Do</h2>
-        {incomplete && incomplete.map(todo => <Card key={todo.id} todo={todo} onEditClick={openTodoDialog}/>)}
+        {todoData && todoData.filter(todo => !Boolean(todo.isCompleted)).map(todo => <Card key={todo.id} todo={todo} onEditClick={openTodoDialog}/>)}
       </div>
       <div className={styles.sections}>
         <h2>Completed</h2>
-        {complete && complete.map(todo => <Card key={todo.id} todo={todo} onEditClick={openTodoDialog}/>)}
+        {todoData && todoData.filter(todo => Boolean(todo.isCompleted)).map(todo => <Card key={todo.id} todo={todo} onEditClick={openTodoDialog}/>)}
       </div>
       <dialog id="todoFormEdit" className={styles.modal} >
         {todo && <ToDoListForm onSubmit={onToDoSubmit} mode="EDIT" defaultValues={todo}></ToDoListForm>}

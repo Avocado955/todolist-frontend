@@ -1,8 +1,9 @@
 import styles from "./Card.module.scss";
 import { ToDoListResponse, updateToDoById } from "../../services/todoservices";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import ToDoListForm from "../ToDoListForm/ToDoListForm";
 import { ToDoListData } from "../ToDoListForm/schema";
+import { TodoContext } from "../../contexts/TodoContextProvider";
 
 
 interface CardProps {
@@ -13,13 +14,16 @@ interface CardProps {
 const Card = ({todo, onEditClick}:CardProps) => {
   const [checkedState, setCheckedState] = useState<boolean>(Boolean(todo.isCompleted));
 
+  const {onTodoUpdate} = useContext(TodoContext);
+
 
   const valueChanged = () => {
     const isCompleteValue = !checkedState;
     setCheckedState(isCompleteValue);
     const newTodo = {task: todo.task, categoryId: todo.category.id.toString(), isCompleted: isCompleteValue};
     console.log(newTodo);
-    updateToDoById(todo.id, newTodo).then(result => console.log(result)).catch(e => console.log(e));
+    onTodoUpdate(todo.id, newTodo);
+
   }
 
   

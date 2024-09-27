@@ -62,7 +62,7 @@ export const createToDo = async (data: ToDoListData) => {
   return await response.json() as ToDoListResponse;
 }
 
-export const deleteToDoById = async (id: number) => {
+export const deleteToDoById = async (id: string) => {
   const response = await fetch(baseURL + "/todos/" + id, {
     method: "DELETE",
   });

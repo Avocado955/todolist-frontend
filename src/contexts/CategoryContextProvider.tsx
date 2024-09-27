@@ -26,7 +26,10 @@ const CategoryContextProvider = ({children} : CategoryContextProviderProps) => {
   }, []);
 
   const onCategoryCreate = async (data: CategoryData) => {
-
+    try {
+    } catch (e) {
+      
+    }
   };
 
   const onCategoryDelete = async (id: string) => {
