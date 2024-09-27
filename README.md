@@ -57,8 +57,7 @@
 
 ## Known issues
 
--   Remaining bugs, things that have been left unfixed
--   Features that are buggy / flimsy
+-   Clicking the label for IsCompleted changes the most recently moved Todo card (need to look into fixing this or removing the label being linked)
 
 ---
 
