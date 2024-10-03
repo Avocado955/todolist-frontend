@@ -1,14 +1,16 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./App.module.scss";
 import Header from "./components/Header/Header";
 import { ToDoListData } from './components/ToDoListForm/schema'
 import ToDoListForm from './components/ToDoListForm/ToDoListForm'
 import CardDisplay from "./containers/CardDisplay/CardDisplay";
-import { createToDo, getAllToDos, ToDoListResponse } from "./services/todoservices";
+import { getAllToDos, ToDoListResponse } from "./services/todoservices";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import CategoryManager from "./containers/CategoryManager/CategoryManager";
+import { TodoContext } from "./contexts/TodoContextProvider";
 
 function App() {
+  const {onTodoCreate} = useContext(TodoContext);
   const [error, setError] = useState<Error>();
   const [todos, setToDos] = useState<ToDoListResponse[]>([]);
   const [todoDialog, setTodoDialog] = useState<HTMLDialogElement | null>(null);
@@ -29,8 +31,7 @@ function App() {
 
   const onToDoSubmit = async (data: ToDoListData) => {
     console.log(data);
-    createToDo(data).then(newToDo => setToDos([...todos, newToDo])).catch(e => {
-      console.log(e);
+    onTodoCreate(data).then(closeTodoDialog).catch(e => {
       updateError(e);
     });
   }
@@ -76,10 +77,10 @@ function App() {
     <div className={styles.app}>
       <Header onAddToDoClick={openTodoDialog} onAddCategoryClick={openCategoryDialog}/>
       {error && <ErrorMessage error={error} /> }
-      {todos && <CardDisplay todos={todos} />}
+      {todos && <CardDisplay />}
 
       <dialog id="todoForm" className={styles.modal} >
-        <ToDoListForm onSubmit={onToDoSubmit} mode="ADD" defaultValues={undefined}></ToDoListForm>
+        <ToDoListForm onSubmit={onToDoSubmit} mode="ADD"></ToDoListForm>
         <button className={styles.modal_close} onClick={closeTodoDialog}>X</button>
       </dialog>
       <dialog id="categoryForm" className={styles.modal}>

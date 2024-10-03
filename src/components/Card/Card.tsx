@@ -1,8 +1,6 @@
 import styles from "./Card.module.scss";
-import { ToDoListResponse, updateToDoById } from "../../services/todoservices";
-import { useContext, useEffect, useState } from "react";
-import ToDoListForm from "../ToDoListForm/ToDoListForm";
-import { ToDoListData } from "../ToDoListForm/schema";
+import { ToDoListResponse} from "../../services/todoservices";
+import { useContext, useState } from "react";
 import { TodoContext } from "../../contexts/TodoContextProvider";
 
 

@@ -10,11 +10,11 @@ import { ToDoListResponse } from "../../services/todoservices";
 interface ToDoListFormProps {
   onSubmit: (data: ToDoListData) => unknown;
   mode: 'EDIT' | 'ADD';
-  defaultValues?: ToDoListResponse | undefined;
+  defaultValue?: ToDoListResponse | undefined;
 }
 
-const ToDoListForm = ({onSubmit, mode, defaultValues}: ToDoListFormProps) => {
-  const {reset, register, formState:{errors, isSubmitSuccessful}, handleSubmit} = useForm<ToDoListData>({resolver: zodResolver(schema), defaultValues: {task: defaultValues?.task || "", categoryId: defaultValues?.category.id.toString() || "1", isCompleted: Boolean(defaultValues?.isCompleted) || false}});
+const ToDoListForm = ({onSubmit, mode, defaultValue}: ToDoListFormProps) => {
+  const {reset, register, formState:{errors, isSubmitSuccessful}, handleSubmit} = useForm<ToDoListData>({resolver: zodResolver(schema), defaultValues: {task: defaultValue?.task || "", categoryId: defaultValue?.category.id.toString() || "1", isCompleted: Boolean(defaultValue?.isCompleted) || false}});
 
   const [categories, setCategories] = useState<CategoryResponse[]>([]);
 
@@ -31,19 +31,19 @@ const ToDoListForm = ({onSubmit, mode, defaultValues}: ToDoListFormProps) => {
       <h2>{mode == "ADD" ? "Create " : "Edit "}To Do</h2>
       <div className={styles.field}>
         <label htmlFor="task">Task</label>
-        <input type="text" id="task" placeholder="Task" {...register('task')} value={defaultValues?.task} />
+        <input type="text" id="task" placeholder="Task" {...register('task')} />
       </div>
         {errors?.task && <small className={styles.error_text}>{errors.task.message}</small>}
       <div className={styles.field}>
         <label htmlFor="categoryId">Category</label>
-        <select id="catergoryId" {...register('categoryId')} value={defaultValues?.category.id}>
+        <select id="catergoryId" {...register('categoryId')} >
           {categories && categories.map(category => <option value={category.id} key={category.id}>{category.name}</option>)}
         </select>
       </div>
         {errors?.categoryId && <small className={styles.error_text}>Select an option or create a Category</small>}
       <div>
         <label htmlFor="completed">Completed?</label>
-        <input type="checkbox" id="completed" {...register('isCompleted')} value={defaultValues?.isCompleted}/>
+        <input type="checkbox" id="completed" {...register('isCompleted')} />
       </div>
     <button className={styles.form_Btn} type="submit">Submit</button>
     </form>

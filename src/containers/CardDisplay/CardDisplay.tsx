@@ -10,7 +10,7 @@ import { TodoContext } from "../../contexts/TodoContextProvider";
 const CardDisplay = () => {
   const [todoDialogEdit, setTodoDialogEdit] = useState<HTMLDialogElement | null>(null);
   const [todo, setTodo] = useState<ToDoListResponse | undefined>(undefined);
-  const {todoData} = useContext(TodoContext);
+  const {todoData, onTodoUpdate} = useContext(TodoContext);
 
   useEffect(() => {
     const foundTodoDialog = document.getElementById('todoFormEdit') as HTMLDialogElement;
@@ -19,7 +19,9 @@ const CardDisplay = () => {
 
 
   const onToDoSubmit = (data: ToDoListData) => {
-    console.log(data);
+    if (todo != null) {
+      onTodoUpdate(todo.id, data).then(closeTodoDialog);
+    }
   }
   
   const openTodoDialog = async (todoId: number) => {
@@ -48,7 +50,7 @@ const CardDisplay = () => {
         {todoData && todoData.filter(todo => Boolean(todo.isCompleted)).map(todo => <Card key={todo.id} todo={todo} onEditClick={openTodoDialog}/>)}
       </div>
       <dialog id="todoFormEdit" className={styles.modal} >
-        {todo && <ToDoListForm onSubmit={onToDoSubmit} mode="EDIT" defaultValues={todo}></ToDoListForm>}
+        {todo && <ToDoListForm onSubmit={onToDoSubmit} mode="EDIT" defaultValue={todo}></ToDoListForm>}
         <button className={styles.modal_close} onClick={closeTodoDialog}>X</button>
       </dialog>
     </div>

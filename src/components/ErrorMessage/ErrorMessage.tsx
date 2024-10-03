@@ -6,8 +6,6 @@ interface ErrorMessageProps {
 
 const ErrorMessage = ({error}: ErrorMessageProps) => {
 
-  console.log("It called the Error Message Component");
-
   return (
     <div className={styles.errorMessage}>
       <h3>{error.message}</h3>
