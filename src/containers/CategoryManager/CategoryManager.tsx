@@ -1,17 +1,14 @@
 import styles from "./CategoryManager.module.scss";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import CategoryForm from "../../components/CategoryForm/CategoryForm";
 import { CategoryData } from "../../components/CategoryForm/schema";
-import { CategoryResponse, getAllCategories } from "../../services/categoryservice";
 import CategoryCard from "../../components/CategoryCard/CategoryCard";
+import { CategoryContext } from "../../contexts/CategoryContextProvider";
 
 const CategoryManager = () => {
-  const [categories, setCategories] = useState<CategoryResponse[]>([]);
+  const {categoryData} = useContext(CategoryContext);
 
   useEffect(() => {
-    getAllCategories().then(data => {
-      setCategories(data)
-    }).catch(e => console.log(e));
   }, [])
 
   const onCategorySubmit = (data: CategoryData) => {
@@ -22,7 +19,7 @@ const CategoryManager = () => {
     <div className={styles.categoryManager}>
       <div className={styles.categoryCardDisplay}>
         {/* all current categories */}
-        {categories && categories.map(category => <CategoryCard key={category.id} category={category} />)}
+        {categoryData && categoryData.map(category => <CategoryCard key={category.id} category={category} />)}
       </div>
       <CategoryForm onSubmit={onCategorySubmit}></CategoryForm>
     </div>
