@@ -56,7 +56,7 @@ const TodoContextProvider = ({children} : TodoContextProviderProps) => {
       );
       setTodoData(filteredTodo);
     } else {
-      console.log("Failed to delete inside Context provider with id: " + id);
+      console.log("Failed to delete Todo inside Context provider with id: " + id);
     }
   };
 
